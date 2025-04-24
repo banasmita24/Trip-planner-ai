@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import CreateTrip from './create-trip/index';
-import MyTrips from './my-trip/index';
+import CreateTrip from '../src/create-trip/index';
+import MyTrips from '../src/my-trip/index';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { vi } from 'vitest';
 import React from 'react';
