@@ -1,7 +1,20 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'; // Import MemoryRouter
+import { MemoryRouter } from 'react-router-dom';
 import CreateTrip from './index';
+import { useGoogleLogin } from '@react-oauth/google';
+import { chatSession } from '../service/AiModel';
+import { setDoc, getFirestore } from "firebase/firestore";
 import { toast } from 'sonner';
+import { vi } from 'vitest';
+import React from 'react';
+
+// ✅ Mock react-google-places-autocomplete to prevent "Google script not loaded" error
+vi.mock('react-google-places-autocomplete', () => {
+  return {
+    __esModule: true,
+    default: () => <input placeholder="Mock Google Autocomplete" />,
+  };
+});
 
 // Mocking necessary modules
 vi.mock('@react-oauth/google');
@@ -9,18 +22,17 @@ vi.mock('../service/AiModel');
 vi.mock('sonner');
 vi.mock('firebase/firestore', () => ({
   setDoc: vi.fn(),
-  getFirestore: vi.fn(), // Mocking getFirestore
+  getFirestore: vi.fn(),
 }));
 
 describe('CreateTrip Component', () => {
   beforeEach(() => {
-    // Reset mocks before each test
     vi.clearAllMocks();
     localStorage.clear();
   });
 
   const renderWithRouter = (ui) => {
-    return render(<MemoryRouter>{ui}</MemoryRouter>); // Wrap with MemoryRouter
+    return render(<MemoryRouter>{ui}</MemoryRouter>);
   };
 
   test('renders CreateTrip component', () => {
@@ -40,5 +52,4 @@ describe('CreateTrip Component', () => {
       expect(toast).toHaveBeenCalledWith("Please fill all details!");
     });
   });
-
 });
