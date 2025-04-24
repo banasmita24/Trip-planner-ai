@@ -1,9 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom'; // Import MemoryRouter
 import CreateTrip from './index';
-import { useGoogleLogin } from '@react-oauth/google';
-import { chatSession } from '../service/AiModel';
-import { setDoc, getFirestore } from "firebase/firestore";
 import { toast } from 'sonner';
 
 // Mocking necessary modules
