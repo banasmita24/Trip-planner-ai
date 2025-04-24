@@ -1,8 +1,8 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import CreateTrip from './index';
+import CreateTrip from '../src/create-trip/index';
 import { useGoogleLogin } from '@react-oauth/google';
-import { chatSession } from '../service/AiModel';
+import { chatSession } from '../src/service/AiModel';
 import { setDoc, getFirestore } from "firebase/firestore";
 import { toast } from 'sonner';
 import { vi } from 'vitest';
