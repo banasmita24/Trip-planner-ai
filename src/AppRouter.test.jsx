@@ -4,6 +4,16 @@ import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import CreateTrip from './create-trip/index';
 import MyTrips from './my-trip/index';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { vi } from 'vitest';
+import React from 'react';
+
+// ✅ Mock react-google-places-autocomplete to prevent "Google script not loaded" error
+vi.mock('react-google-places-autocomplete', () => {
+  return {
+    __esModule: true,
+    default: () => <input placeholder="Mock Google Autocomplete" />,
+  };
+});
 
 describe('App Routing', () => {
   describe('CreateTrip route', () => {
