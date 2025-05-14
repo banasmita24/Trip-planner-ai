@@ -57,7 +57,7 @@ function CreateTrip() {
     }
 
     if (formData?.totalDays > 5) {
-      toast("Trip can’t exceed 4 days!");
+      toast("Trip can’t exceed 5 days!");
       return;
     }
 
